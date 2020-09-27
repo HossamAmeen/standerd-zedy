@@ -2,12 +2,13 @@
  <div class="form-group">
     <label class="col-lg-2 control-label">عنوان الخبر</label>
      <div class="col-lg-10">
-         <input type="text" name="{{ $input }}"  value="{{ isset($row) ? $row->{$input} : Request::old($input) }} "
+         <input type="text" name="{{ $input }}"   @if(isset($row)) value="{{$row->$input}}" @else
+         value="{{Request::old($input)}}" @endif
            class="form-control" required>
            @error($input)
-           <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-            </span>
+           <div class="alert alert-danger" role="alert" style="text-align: center">
+            <strong>{{ $message }}</strong>
+          </div>
            @enderror
     </div>
  </div>  
@@ -15,12 +16,13 @@
  <div class="form-group">
     <label class="col-lg-2 control-label"> عنوان الخبر بالانجلزي</label>
      <div class="col-lg-10">
-         <input type="text" name="{{ $input }}"  value="{{ isset($row) ? $row->{$input} : Request::old($input) }} "
+         <input type="text" name="{{ $input }}"   @if(isset($row)) value="{{$row->$input}}" @else
+         value="{{Request::old($input)}}" @endif
            class="form-control">
            @error($input)
-           <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-            </span>
+           <div class="alert alert-danger" role="alert" style="text-align: center">
+            <strong>{{ $message }}</strong>
+          </div>
            @enderror
     </div>
  </div>   
@@ -34,9 +36,9 @@
             <input name="{{ $input }}" id="file-3" type="file" multiple="true" >
         </div>
         @error($input)
-        <span class="invalid-feedback" role="alert">
-                 <strong>{{ $message }}</strong>
-        </span>
+        <div class="alert alert-danger" role="alert" style="text-align: center">
+          <strong>{{ $message }}</strong>
+        </div>
         @enderror
         <span style="margin-right: 15%">يفضل رفع الصورة 400 * 400 </span>
 </div>  
@@ -47,9 +49,9 @@
           <input type="date" id="date" name="{{ $input }}"  value="{{ isset($row) ? $row->{$input} : Request::old($input) }} "
             class="form-control">
             @error($input)
-            <span class="invalid-feedback" role="alert" required>
-                     <strong>{{ $message }}</strong>
-            </span>
+            <div class="alert alert-danger" role="alert" style="text-align: center">
+              <strong>{{ $message }}</strong>
+            </div>
             @enderror
       </div>
   </div>    
@@ -61,9 +63,9 @@
    </textarea>
 </div><br>
 @error($input)
-<span class="invalid-feedback" role="alert">
-         <strong>{{ $message }}</strong>
-</span>
+<div class="alert alert-danger" role="alert" style="text-align: center">
+  <strong>{{ $message }}</strong>
+</div>
 @enderror
 
 <label class="col-md-2 control-label">الوصف بالانجلزي</label>
@@ -74,8 +76,8 @@
    </textarea>
 </div><br>
 @error($input)
-<span class="invalid-feedback" role="alert">
-         <strong>{{ $message }}</strong>
-</span>
+<div class="alert alert-danger" role="alert" style="text-align: center">
+  <strong>{{ $message }}</strong>
+</div>
 @enderror
 

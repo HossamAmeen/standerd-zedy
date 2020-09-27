@@ -1,0 +1,732 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+	
+}
+
+.section{
+	padding: 60px 0;
+}
+p{
+	font-size: 15px;
+	color:#A4A4A4;
+}
+h1{
+	font-size: 25px;
+	font-weight: bold;
+}
+.header .navbar.activetooo{
+	background-color: #00377b !important;
+}
+
+/*--------------------Start Global---------------*/
+
+header {
+  position: relative;
+  background-color: black;
+  height: 100vh;
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+header video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+header .container {
+  position: relative;
+  z-index: 2;
+}
+
+header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  
+  opacity: 0.5;
+  z-index: 1;
+}
+
+@media (pointer: coarse) and (hover: none) {
+  header {
+    background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+  }
+  header video {
+    display: none;
+  }
+}
+
+
+
+
+
+/*--------------------End Global---------------*/
+
+/*--------------------Start NavBar---------------*/
+.header .navbar {
+	position:fixed;
+	width:100%;
+	background-image: linear-gradient(to right, #00377b, #323183); !important;
+	z-index: 999;
+}
+@media(max-width:991px){
+	.header .navbar{
+		background-color:#00377b !important
+	}
+	
+}
+.header .navbar .navbar-nav .nav-item{
+	margin-left: 60px;
+}
+.header .navbar .navbar-nav .nav-item .nav-link{
+	color:#fff;
+	position: relative;
+	transition: all .5s ease-in-out;
+}
+.header .navbar .navbar-nav .nav-item .nav-link.active{
+	color:#FFB549;
+	font-weight: 600;
+}
+.header .navbar .navbar-nav .nav-item .nav-link.active::before{
+	position: absolute;
+	width:11px;
+	height: 11px;
+	background-color: #FFB549;
+	content: "";
+	bottom:-5px;
+	left:30px;
+	border-radius: 50%;
+}
+.header .navbar .navbar-nav .nav-item .nav-link:hover{
+	color:#FFB549;
+}
+.dropdown-menu{
+	text-align: right;
+	background-color: #0f357d;
+	border:2px solid #ffb549;
+}
+.dropdown-item{
+	color:#fff;
+}
+.header .navbar .navbar-brand img{
+    width: 100px;
+}
+/*--------------------End NavBar---------------*/
+
+/*--------------------Start Landing---------------*/
+.landing{
+	
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+}
+.landing .the-landing-details{
+	display: flex;
+	justify-content: space-between;
+}
+.landing .the-landing-details .landing-content{
+	margin-top: 50px;
+	text-align: center;
+	padding: 0px 30px;
+}
+.landing .the-landing-details .landing-content .landing-logo{
+	margin-bottom:40px;
+}
+.landing .the-landing-details .landing-content  h6{
+	font-size: 20px;
+    color: #C5BDBD;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+.landing .the-landing-details .landing-content a{
+	width: 190px;
+    height: 45px;
+    padding: 7px 73px;
+    background-color: #ffb549;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0px 3px 6px #ffb549;
+	transition: all .5s ease-in-out;
+}
+.landing .the-landing-details .landing-content a:hover{
+	background-color: #fff;
+	color:#ffb549;
+}
+@media(max-width:768px){
+	.landing .the-landing-details{
+		 flex-direction: column;
+	}
+	.landing .the-landing-details .landing-illustration{
+		width:300px;
+		height: 300px;
+		margin: auto;
+	}
+	.landing .the-landing-details .landing-content  h6{
+		font-size: 17px
+	}
+	.landing .the-landing-details .landing-content a{
+		width: 160px;
+		height: 35px;
+		padding: 5px 50px;
+		border-radius: 50px;
+	}
+}
+@media(max-width:576px){
+	.landing .the-landing-details .landing-content{
+		margin-top: -15px;
+	}
+	.landing .the-landing-details .landing-content .landing-logo{
+		margin-bottom: 20px;
+	}
+	.landing .the-landing-details .landing-content  h6{
+		font-size: 14px;
+	}
+}
+/*--------------------End Landing---------------*/
+
+/*--------------------Start How---------------*/
+.how-zedy .how-content h1{
+	font-size: 25;
+	font-weight: bold;
+	margin-bottom: 40px;
+	
+}
+.how-zedy .how-content span{
+	display: block;
+	font-size: 40px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	
+}
+.how-zedy .how-content span img{
+    width: 200px;
+}
+.how-zedy .how-content p{
+	font-size: 15px;
+	color:#A4A4A4;
+	margin-bottom: 70px;
+	line-height: 2;
+	
+}
+.how-zedy .how-content a{
+	width:190px;
+	height: 45px;
+	padding: 7px 73px;
+	background-color: #ffb549;
+	color:#fff;
+	text-decoration: none;
+	border-radius: 30px;
+	box-shadow: 0px 3px 6px #ffb549;
+	transition: .5s all ease-in-out;
+	
+}
+.how-zedy .how-content a:hover{
+	background-color: #fff;
+	color:#ffb549;
+	
+}
+.how-zedy .how-photo {
+   text-align: center;
+}
+.how-zedy .how-photo img{
+	text-align: center;
+	
+}
+@media(max-width:767px){
+	.how-zedy .how-photo{
+		text-align: right;
+	}
+	.how-zedy .how-photo img{
+		margin-top: 50px;	
+	}
+	.how-zedy .how-content h1{
+		font-size: 23px
+	}
+	.how-zedy .how-content p{
+		font-size: 14px;
+	}
+	
+}
+/*--------------------End How---------------*/
+
+/*--------------------Start Services---------------*/
+.services .serivce-line{
+	background-color: #0b367d;
+	margin: auto;
+	width: 130px;
+	height: 3px;
+}
+.services .serivce-line span{
+	margin: auto;
+	background-color: #ffb549;
+	width:30px;
+	height: 3px;
+	position: relative;
+	display: block;
+	
+}
+.services .our-services{
+	padding: 65px 0;
+	
+}
+.services .our-services .service-deatils{
+	box-shadow: 3px 6px 6px #eee;
+	padding: 35px 15px;
+	margin-bottom: 65px;
+	position: relative;
+	transition: all .5s ease-in-out;
+}
+.services .our-services .service-deatils:hover {
+	background-color: #10357e;
+	transform: translateY(-.5rem) scale(1.04);
+	transition: all .5s ease-in-out;
+}
+.services .our-services .service-deatils i{
+	margin-bottom: 20px;
+	font-size: 60px;
+	color:#10357e;
+}
+.services .our-services .service-deatils:hover i{
+	color: #FFB549;
+}
+.services .our-services .service-deatils h4{
+	font-size: 16px;
+	margin-bottom: 10px;
+	line-height: 1.8;
+}
+.services .our-services .service-deatils:hover h4{
+	color:#fff;
+}
+.services .our-services .service-deatils a{
+	font-size: 16px;
+	color:#ffb549;
+	text-decoration: none;
+	position: relative;
+	
+}
+.services .our-services .service-deatils a::before{
+	content: "";
+	position: absolute;
+	height: 2px;
+	background-color: #ffb549;
+	bottom: 10px;
+	left:10px;
+}
+.services .our-services .service-deatils a:hover:before{
+	width:30px;
+}
+/*--------------------End Services---------------*/
+
+/*--------------------Start Why---------------*/
+.why{
+	background-image: url("../images/whyzedy.png");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	padding: 50px 0;
+}
+.why .why-header h1 {
+	color:#fff;
+	font-size: 25px;
+	font-weight: 600;
+	margin-bottom: 15px;
+	position: relative;
+	
+}
+.why .why-header .line{
+	margin: auto;
+	width:135px;
+	background-color:#ffb549;
+	height:3px;
+	margin-bottom: 80px;
+}
+.why .why-details i{
+	
+	width:60px;
+	height: 60px;
+	background-color: #fff;
+	line-height: 60px;
+	text-align: center;
+    margin-bottom: 15px;
+	border-radius: 5px;
+	font-size: 25px;
+	color:#ffb549;
+	background-color: #00377b;
+	border:none;
+}
+.why .why-details .why-content{
+	margin-bottom: 60px;
+    text-align: left;
+}
+.why .why-details .why-content h3{
+	font-size: 22px;
+	color:#fff;
+}
+.why .why-details .why-content p{
+	font-size: 14px;
+}
+/*--------------------End Why---------------*/
+
+
+/*--------------------Start where-find---------------*/
+.where-find {
+	background-image: url("../images/background.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	height: 500px;
+}
+.where-find .where-header{
+	background-color: #143578;
+	padding: 10px;
+	border-radius: 40px;
+	max-width:700px;
+	margin-bottom: 20px;
+}
+.where-find .where-header h1{
+	font-size: 30px;
+	color:#fff;
+	text-align: center;
+}
+.where-find p{
+	font-size: 25px;
+	color:#717171;
+	font-weight: bold;
+	margin-right: 40px;
+}
+@media(max-width:776px){
+	.where-find .where-header h1{
+		font-size: 20px;
+	}
+	.where-find p{
+		font-size: 16px;
+		text-align: center;
+	}
+}
+/*--------------------End where-find---------------*/
+
+/*--------------------End where-find---------------*/
+
+/*--------------------Start Our-team--------------*/
+.team .our-team{
+	padding: 40px 0;
+}
+.team .our-team .team-details{
+    margin-bottom: 20px;
+}
+.team .our-team  .content_img{
+ position: relative;
+ width: 100%;
+ height: 100%;
+    margin-bottom: 20px;
+}
+.team .our-team .content_img div{
+ position: absolute;
+ bottom: 0;
+ left: 0;
+ background: black;
+ color: white;
+ margin-bottom: 5px;
+ font-family: sans-serif;
+ opacity: 0;
+ visibility: hidden;
+ -webkit-transition: visibility 0s, opacity 0.5s linear; 
+ transition: visibility 0s, opacity 0.5s linear;
+}
+.team .our-team .content_img:hover{
+     cursor: pointer;
+}
+
+.team .our-team .content_img:hover div{
+  width: 150px;
+ padding: 8px 15px;
+ visibility: visible;
+ opacity: 0.7; 
+    transition: all .5s ease-in-out;
+}
+
+.team .our-team .member-photo{
+	text-align: center;
+}
+
+.team .our-team .member-photo img{
+	width:100%;
+	border: 4px solid #fff;
+	margin-bottom: 15px;
+}
+
+.team .our-team h6{
+	font-size: 15px;
+	color:#fff;
+	text-align: center;
+	font-weight: 600;;
+}
+.team .our-team span{
+	color:#ffb84f;
+	font-size: 15px;
+    font-weight: 600;
+	text-align: center;
+	display: block;
+}
+
+/*--------------------End Our-team--------------*/
+
+/*--------------------Start Our-work--------------*/
+.our-works{
+    padding: 50px 0;
+}
+.our-works i{
+	font-size: 30px;
+}
+.our-works .works h1{
+	font-size: 25px;
+}
+.our-works .face {
+    margin-bottom: 20px;
+}
+.our-works .face a {
+    display: block;
+  background: #3B5998;
+  color: white;
+    height: 90px;
+    line-height: 90px; 
+}
+.our-works .beha{
+    margin-bottom: 20px;
+}
+.our-works .beha a {
+    display: block;
+  background: #0056ff;
+  color: white;
+  height: 90px;
+    line-height: 90px;
+}
+.our-works .you{
+    margin-bottom: 20px;
+}
+.our-works .you a {
+    display: block;
+  background: #bb0000;
+  color: white;
+    height: 90px;
+    line-height: 90px;
+}
+
+
+
+/*--------------------End Our-work--------------*/
+
+/*--------------------Start Our-Clinets--------------*/
+.our-clients {
+    padding: 40px 0;
+}
+.our-clients .client-logo img{
+	width: 100%;
+    height: 100%;
+}
+.our-clients .client-logo{
+    margin-bottom: 10px;
+}
+.our-clients h1{
+	margin-top: 50px;
+}
+
+.our-clients .details-logo{
+    padding: 30px 0;
+}
+.our-clients .details-logo .name_of_client{
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #08367d;
+    padding: 10px;
+    color:#ffff;
+    transition: all .5s ease-in-out;
+}
+.our-clients .details-logo .name_of_client:hover{
+    background-color: #ffb84f;
+    color:#08367d;
+    
+}
+
+/*--------------------End Our-Clinets--------------*/
+
+/*--------------------Start Contact--------------*/
+
+
+
+
+/*--------------------Start Client page--------------*/
+.our-clients-page {
+	padding-top: 100px;
+}
+.our-clients-page .section-header .serivce-line{
+	background-color: #0b367d;
+	margin: auto;
+	width: 130px;
+	height: 3px;
+}
+.our-clients-page .section-header .serivce-line span{
+	margin: auto;
+	background-color: #ffb549;
+	width:30px;
+	height: 3px;
+	position: relative;
+	display: block;
+}
+.our-clients-page .c-details{
+	padding:50px 0;
+}
+.our-clients-page .c-details .c-client{
+	background-color: #eee;
+	padding: 10px;
+	box-shadow:  4px 4px  6px #aaa;
+	margin-bottom: 30px;
+}
+.our-clients-page .c-details .c-client .c-brand{
+	background-color: #01377b;
+	margin-bottom: 20px;
+	opacity: .6;
+	transition: all .5s ease-in-out;
+	overflow: hidden;
+}
+.our-clients-page .c-details .c-client .c-brand:hover{
+	opacity: 1;
+}
+/*--------------------End Client page--------------*/
+
+.contact{
+	background-image: url("../images/Path%20428.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 60px 0;
+}
+.contact .contact-header h1{
+	color:#fff;
+	margin-bottom: 25px;
+}
+.contact .contact-header ul li{
+	display: inline-block;
+	margin-left: 40px;
+}
+.contact .contact-header ul li span{
+	color:#A4A4A4;
+	margin-left: 10px;
+}
+.contact .footer{
+	padding: 20px;
+}
+.contact .footer h4{
+	font-size: 16px;
+	color:#fff;
+	margin-bottom: 30px;
+}
+.contact .footer input::placeholder{
+	font-size: 13px;
+	color:#888;
+}
+.contact .footer input{
+	margin-bottom: 35px;
+}
+.contact .footer button{
+    width: 300px;
+    height: 45px;
+    border-radius: 30px;
+    border: none;
+    background-color: #ffb549;
+    color: #fff;
+	margin-bottom: 50px;
+	box-shadow: 0px 3px 6px #FFB549;
+	transition: all .5s ease-in-out;
+	cursor: pointer;
+}
+.contact .footer button:hover{
+	background-color: #fff;
+	color:#ffb549;
+}
+.contact .footer .zedy-footer{
+	margin-bottom: 50px;
+}
+.contact .footer ul li{
+	display: inline-block;
+	margin-right:47px;
+	color:#fff;
+}
+.contact .footer ul li i{
+	font-size:32px;
+	transition: all .5s ease-in-out;
+	cursor: pointer;
+}
+.contact .footer ul li i:hover{
+	color:#ffb549;
+}
+@media(max-width:768px){
+	.contact .footer .zedy-footer{
+		text-align: center;
+	}
+	.contact .footer ul{
+		text-align: center;
+		
+	}
+}
+.contact .address p{
+    font-size: 16px;
+}
+.contact  p{
+	font-size: 15px;
+    color: #fff;
+
+}
+.contact  p img{
+    width:100px;
+}
+@media(max-width:576px){
+	.contact .footer{
+		text-align: center;
+	}
+}
+/*--------------------End Contact--------------*/
+/*--------------------Start Scroll Button--------------*/
+.sroll-button i{
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background-color:#ffb84f;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      color: #0b367d;
+      border: 2px solid #fff;
+      font-size: 20px;
+      display: none;
+      cursor: pointer
+}
+/*--------------------End Scroll Button--------------*/
+
+
+
+
+

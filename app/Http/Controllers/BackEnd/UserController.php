@@ -17,7 +17,7 @@ class UserController extends BackEndController
 
     public function store(Request $request){
     //    return $request->all();
-       
+
         $requestArray = $request->all();
         if(isset($requestArray['password']) )
         $requestArray['password'] =  Hash::make($requestArray['password']);
@@ -26,11 +26,11 @@ class UserController extends BackEndController
             $fileName = $this->uploadImage($request );
             $requestArray['image'] =  $fileName;
         }
-       
+
         $requestArray['user_id'] = Auth::user()->id;
         $this->model->create($requestArray);
         session()->flash('action', 'تم الاضافه بنجاح');
-       
+
         $data=[
            "message" => "create new account for this email "
         ];
@@ -40,14 +40,14 @@ class UserController extends BackEndController
             $message->to($request->email);
             $message->subject("verification");
         });
- 
+
         return redirect()->route($this->getClassNameFromModel().'.index');
     }
 
     public function update($id , Request $request){
 
-        
-       
+
+
         $row = $this->model->FindOrFail($id);
         $requestArray = $request->all();
         if(isset($requestArray['password']) && $requestArray['password'] != ""){
@@ -60,7 +60,7 @@ class UserController extends BackEndController
             $fileName = $this->uploadImage($request );
             $requestArray['image'] =  $fileName;
         }
-        
+
         $requestArray['user_id'] = Auth::user()->id;
         $row->update($requestArray);
 
@@ -68,15 +68,19 @@ class UserController extends BackEndController
             "message" => "update account for this email "
          ];
          Mail::send('back-end.account_mail',$data,function($message) use ($data){
- 
+
              $message->from( "" );
              $message->to($request->email);
              $message->subject("verification");
          });
-  
+
         session()->flash('action', 'تم التحديث بنجاح');
         return redirect()->route($this->getClassNameFromModel().'.index');
     }
 
-   
+    public function login(Request $request)
+    {
+        // return $request->all();
+    }
+
 }
