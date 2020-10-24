@@ -16,7 +16,7 @@
     <!-- iOS webapp metatags -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-
+    <meta name="csrf-token" content="{!! csrf_token() !!}">
     <!-- iOS webapp icons -->
     <link rel="apple-touch-icon-precomposed" href="{{asset('panel/assets/images/ios/fickle-logo-72.png')}}" />
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('panel/assets/images/ios/fickle-logo-72.png')}}" />
@@ -348,7 +348,11 @@
      <!--Demo table script start-->
      <script src="{{asset('panel/assets/js/pages/table.js')}}"></script>
      <!--Demo table script end-->
-
+     <script type="text/javascript">
+        $(document).ready(function(){
+                $("#{{$routeName}}").addClass('active');
+            });
+    </script>
     @stack('js')
 </body>
 </html>

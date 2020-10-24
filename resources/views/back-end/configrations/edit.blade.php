@@ -65,7 +65,7 @@
                                       @enderror
                                 </div>
                             </div>
-                            @php $input = "home_description"; @endphp
+                            {{-- @php $input = "home_description"; @endphp
                             <div class="form-group">
                                 <label class="col-lg-2 control-label">وصف الرئيسيه</label>
 
@@ -92,13 +92,39 @@
                                       </span>
                                       @enderror
                                 </div>
-                            </div>
-
-
-
-                            @php $input = "phone"; @endphp
+                            </div> --}}
+                            
+                            @php $input = "en_address"; @endphp
                             <div class="form-group">
-                                <label class="col-lg-2 control-label">الهاتف</label>
+                                <label class="col-lg-2 control-label">العنوان</label>
+
+                                <div class="col-lg-10">
+                                    <input type="text" name="{{ $input }}"  value="{{ isset($row) ? $row->{$input} : Request::old($input) }} "
+                                      class="form-control" required>
+                                      @error($input)
+                                      <span class="invalid-feedback" role="alert">
+                                               <strong>{{ $message }}</strong>
+                                      </span>
+                                      @enderror
+                                </div>
+                            </div>
+                            @php $input = "address"; @endphp
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">العنوان</label>
+
+                                <div class="col-lg-10">
+                                    <input type="text" name="{{ $input }}"  value="{{ isset($row) ? $row->{$input} : Request::old($input) }} "
+                                      class="form-control" required>
+                                      @error($input)
+                                      <span class="invalid-feedback" role="alert">
+                                               <strong>{{ $message }}</strong>
+                                      </span>
+                                      @enderror
+                                </div>
+                            </div>
+                            @php $input = "whatsapp"; @endphp
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">whatsapp</label>
 
                                 <div class="col-lg-10">
                                     <input type="text" name="{{ $input }}"  value="{{ isset($row) ? $row->{$input} : Request::old($input) }} "
@@ -110,7 +136,7 @@
                                       @enderror
                                 </div>
                             </div>
-                            @php $input = "video"; @endphp
+                            {{-- @php $input = "video"; @endphp
                             <div class="form-group">
                                 <label class="col-lg-2 control-label">رابط الفديو الأول</label>
 
@@ -137,7 +163,7 @@
                                       </span>
                                       @enderror
                                 </div>
-                            </div>
+                            </div> --}}
                              @php $input = "youtube"; @endphp
                             <div class="form-group">
                                 <label class="col-lg-2 control-label">رابط قناة اليوتيوب</label>
@@ -166,7 +192,21 @@
                                       @enderror
                                 </div>
                             </div>
-                            @php $input = "twitter"; @endphp
+                            @php $input = "behance"; @endphp
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">behance account</label>
+
+                                <div class="col-lg-10">
+                                    <input type="text" name="{{ $input }}"  value="{{ isset($row) ? $row->{$input} : Request::old($input) }} "
+                                      class="form-control">
+                                      @error($input)
+                                      <span class="invalid-feedback" role="alert">
+                                               <strong>{{ $message }}</strong>
+                                      </span>
+                                      @enderror
+                                </div>
+                            </div>
+                            {{-- @php $input = "twitter"; @endphp
                             <div class="form-group">
                                 <label class="col-lg-2 control-label">twitter account</label>
 
@@ -193,7 +233,7 @@
                                       </span>
                                       @enderror
                                 </div>
-                            </div>    
+                            </div>     --}}
 
 
                             <label class="col-md-2 control-label">من نحن</label><br><br>

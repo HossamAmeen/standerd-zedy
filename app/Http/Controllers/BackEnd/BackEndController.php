@@ -5,18 +5,25 @@ namespace App\Http\Controllers\BackEnd;
 use App\Http\Controllers\Controller;
 use Carbon;
 use File;
+use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
-use Image;
+use Image , Auth;
 
 class BackEndController extends Controller
 {
 
     protected $model;
-
-    public function __construct(Model $model)
+    protected $routeNameEdit;
+    protected $orderBy;
+    public function __construct(Model $model , $orderBy = "id")
     {
         $this->model = $model;
+        $this->orderBy = $orderBy ; 
+    }
 
+    public function getRouteName()
+    {
+        return   isset($this->routeNameEdit) ? $this->routeNameEdit :  $this->getClassNameFromModel();
     }
 
     public function index()
@@ -64,6 +71,23 @@ class BackEndController extends Controller
         ))->with($append);
     }
 
+    // public function store(Request $request){
+    //     $requestArray = $request->all();
+    //     $requestArray['user_id'] = Auth::user()->id;
+    //     $item=  $this->model->create($requestArray );
+    //     $routeName = $this->getRouteName();
+    //     return view('back-end.'.$routeName .'.row' , compact('item' , 'routeName'));
+    // }
+
+    // public function update($id , Request $request){
+    //     $row = $this->model->FindOrFail($id);
+    //     $requestArray = $request->all();
+    //     $requestArray['user_id'] = Auth::user()->id;
+    //     $row->update($requestArray);
+    //     session()->flash('action', 'تمت التحديث بنجاح');
+    //     return redirect()->route($this->getClassNameFromModel().'.index');
+    // }
+    
     public function destroy($id)
     {
         $this->model->FindOrFail($id)->delete();

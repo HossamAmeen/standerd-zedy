@@ -21,6 +21,7 @@ class CreateConfigrationsTable extends Migration
             $table->string('en_title')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
+            $table->string('en_address')->nullable();
             $table->text('description')->nullable();
             $table->text('en_description')->nullable();
             $table->text('home_description')->nullable();
@@ -33,6 +34,7 @@ class CreateConfigrationsTable extends Migration
             $table->string('video2')->nullable();
             $table->string('youtube')->nullable();
             $table->string('facebook')->nullable();
+            $table->string('behance')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();
 

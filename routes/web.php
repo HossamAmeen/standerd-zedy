@@ -13,14 +13,18 @@ Route::prefix('admin')->group(function(){
         
 
         Route::get('/', 'ConfigrationController@index');
+        Route::any('edit-account', 'UserController@editAccount')->name('edit-account');
         Route::resource('configrations', 'ConfigrationController');
         Route::resource('users', 'UserController');
-      
         Route::resource('news', 'NewsController');
         Route::resource('articles', 'ArticleController');
         Route::resource('galleries', 'GalleryController');   
         Route::resource('questions', 'QuestionController');  
         Route::resource('videos', 'VideoController'); 
+        
+        Route::resource('clients', 'ClientController');
+        Route::resource('employees', 'EmployeeController');
+        Route::resource('services', 'ServiceController');     
     });
 });
 
@@ -35,6 +39,7 @@ Route::get('change/language/{lang}', 'HomeController@change_language');
 Route::prefix('ar')->group(function(){
     Route::get('/', 'HomeController@home');
     Route::get('index', 'HomeController@index');
+    Route::get('clients', 'HomeController@clients');
     Route::get('news', 'HomeController@news');
     Route::get('articles', 'HomeController@articles');
     Route::get('news/{id}', 'HomeController@show_news');
@@ -49,6 +54,7 @@ Route::prefix('en')->group(function(){
 
     Route::get('index', 'HomeController@home')->name('en.index');
     Route::get('/', 'HomeController@home')->name('en.index');
+    Route::get('clients', 'HomeController@clients');
     Route::get('news', 'HomeController@news');
     Route::get('news/{id}', 'HomeController@show_news');
     Route::get('articles', 'HomeController@articles');

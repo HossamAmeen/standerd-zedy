@@ -46,7 +46,25 @@
                 <i class="fas fa-edit"></i><span>تعديل بيانات الحساب</span>
             </a>
         </li>
-        @if (strpos($briefs->manager, 'galleries') !== false)
+        <li class="{{is_active('services')}}">
+            <a href="{{route('services.index')}}"  class="{{is_active('services')}}">
+                    <i class="fa fa-image"></i><span> خدماتنا</span>
+            </a>
+
+        </li>
+        <li class="{{is_active('clients')}}">
+            <a href="{{route('clients.index')}}"  class="{{is_active('clients')}}">
+                    <i class="fa fa-image"></i><span>عملاء</span>
+            </a>
+
+        </li>
+        <li class="{{is_active('employees')}}">
+            <a href="{{route('employees.index')}}"  class="{{is_active('employees')}}">
+                    <i class="fa fa-image"></i><span>موظففين</span>
+            </a>
+
+        </li>
+        {{-- @if (strpos($briefs->manager, 'galleries') !== false)
         <li class="{{is_active('galleries')}}">
             <a href="{{route('galleries.index')}}"  class="{{is_active('galleries')}}">
                     <i class="fa fa-image"></i><span>معرض الصور</span>
@@ -77,7 +95,7 @@
                     <i class="fa fa-question"></i><span>الأسئله الشائعه</span>
             </a>
 
-        </li>
+        </li> --}}
 
         <li >
             <a class="dropdown-item" href="{{ route('logout') }}"

@@ -2,8 +2,7 @@
     {{ csrf_field() }}
     {{ method_field('delete') }}
     <a href="{{ route($routeName.'.edit' , ['id' => $item]) }}" rel="tooltip" title="" class="btn btn-xs btn-info"
-        data-original-title="Edit
-        {{ $sModuleName }}">
+        data-original-title="Edit">
         <i class="fa fa-pencil-square-o"></i>
 
     </a>

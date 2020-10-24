@@ -8,7 +8,7 @@ use App\Models\Article;
 use App\Models\Gallery;
 use App\Models\Question;
 use App\Models\Clinic;
-use App\Models\Service;
+use App\Models\{Service,Client,Employee};
 use App\Models\Drug;
 use App\Models\Operation;
 use Mail;
@@ -17,6 +17,7 @@ class HomeController extends Controller
     protected $lang;  
     public function __construct()
     {
+        $this->lang = "ar";
         if(  request()->segment(1) === null ) {
             $this->lang = "ar";
         }
@@ -44,15 +45,7 @@ class HomeController extends Controller
          if( $rout == url()->previous()){
              $rout = $rout . $lang;
              //return $rout;
-         }
-        //  return strripos($prefUrl , '/') ;
-        // return $rout;
-        //  return strlen($rout);
-        // if(strripos($rout , '/')+3 == strlen($rout)){
-        //     $rout = $rout .'/index';
-        // }
-        //  if($rout == )
-    
+         }    
          return redirect($rout);
      }
      public function index()
@@ -67,89 +60,102 @@ class HomeController extends Controller
         if( $this->lang  == "en" ){
 
             $pageTitle  = "Home";
-            $news = News::all()->sortByDesc("id")->where('en_title','!=',null)->take(3);
-            $articals = Article::all()->sortByDesc("id")->where('en_title','!=',null)->take(4);
-            $articals1 = $articals->slice(0,2);
-            $articals2 = $articals->slice(2,2);
+            // $news = News::all()->sortByDesc("id")->where('en_title','!=',null)->take(3);
+            // $articals = Article::all()->sortByDesc("id")->where('en_title','!=',null)->take(4);
+            // $articals1 = $articals->slice(0,2);
+            // $articals2 = $articals->slice(2,2);
            
-            $questions = Question::all()->sortByDesc("id")->where('en_question','!=',null)->take(2);
-            $drugs = Drug::all()->sortByDesc("id")->where('en_title','!=',null)->take(10);
-            $firstOperation = Operation::all()->sortByDesc("id")->where('en_title','!=',null)->first();
-            $operations = Operation::all()->sortByDesc("id")->where('en_title','!=',null)->take(9);
+            // $questions = Question::all()->sortByDesc("id")->where('en_question','!=',null)->take(2);
+            // $drugs = Drug::all()->sortByDesc("id")->where('en_title','!=',null)->take(10);
+            // $firstOperation = Operation::all()->sortByDesc("id")->where('en_title','!=',null)->first();
+            // $operations = Operation::all()->sortByDesc("id")->where('en_title','!=',null)->take(9);
            
-            $indexOperation = 1 ; 
-            $indexDrugs = 1 ;
-            foreach($operations as $operation){
-                if ($indexOperation < 3) {
+            // $indexOperation = 1 ; 
+            // $indexDrugs = 1 ;
+            // foreach($operations as $operation){
+            //     if ($indexOperation < 3) {
 
-                    $operation1[] = $operation ;
-                }  elseif ($indexOperation < 6) {
-                    $operation2[] = $operation ;
-                }
-                else{
-                    $operation3[] = $operation ;
-                }
-                $indexOperation++;               
-            }
+            //         $operation1[] = $operation ;
+            //     }  elseif ($indexOperation < 6) {
+            //         $operation2[] = $operation ;
+            //     }
+            //     else{
+            //         $operation3[] = $operation ;
+            //     }
+            //     $indexOperation++;               
+            // }
                 
-            foreach($drugs as $drug){
-                if ($indexDrugs % 2 == 0) {
+            // foreach($drugs as $drug){
+            //     if ($indexDrugs % 2 == 0) {
 
-                    $drugs1[] = $drug ;
-                } else {
-                    $drugs2[] = $drug ;
-                }
-                $indexDrugs++;               
-            }
+            //         $drugs1[] = $drug ;
+            //     } else {
+            //         $drugs2[] = $drug ;
+            //     }
+            //     $indexDrugs++;               
+            // }
         //    return drugs2
         }
         else
         {
             $pageTitle = "الرئيسيه";
 
-            $news = News::all()->sortByDesc("id")->take(3);
-            $articals = Article::orderBy('id', 'desc')->paginate(4);
-            $articals1 = $articals->slice(0,2);
-            $articals2 = $articals->slice(2,2);
-            $questions = Question::all()->sortByDesc("id")->take(2);
-            $drugs = Drug::all()->sortByDesc("id")->take(10);
+            // $news = News::all()->sortByDesc("id")->take(3);
+            // $articals = Article::orderBy('id', 'desc')->paginate(4);
+            // $articals1 = $articals->slice(0,2);
+            // $articals2 = $articals->slice(2,2);
+            // $questions = Question::all()->sortByDesc("id")->take(2);
+            // $drugs = Drug::all()->sortByDesc("id")->take(10);
             
-            $operations = Operation::all()->sortByDesc("id")->take(9);
+            // $operations = Operation::all()->sortByDesc("id")->take(9);
 
-            $indexOperation = 1 ; 
-            $indexDrugs = 1 ;
-            foreach($operations as $operation){
-                if ($indexOperation < 3) {
+            // $indexOperation = 1 ; 
+            // $indexDrugs = 1 ;
+            // foreach($operations as $operation){
+            //     if ($indexOperation < 3) {
 
-                    $operation1[] = $operation ;
-                }  elseif ($indexOperation < 6) {
-                    $operation2[] = $operation ;
-                }
-                else{
-                    $operation3[] = $operation ;
-                }
-                $indexOperation++;               
-            }
+            //         $operation1[] = $operation ;
+            //     }  elseif ($indexOperation < 6) {
+            //         $operation2[] = $operation ;
+            //     }
+            //     else{
+            //         $operation3[] = $operation ;
+            //     }
+            //     $indexOperation++;               
+            // }
 
-            foreach($drugs as $drug){
-                if ($indexDrugs % 2 == 0) {
+            // foreach($drugs as $drug){
+            //     if ($indexDrugs % 2 == 0) {
 
-                    $drugs1[] = $drug ;
-                } else {
-                    $drugs2[] = $drug ;
-                }
-                $indexDrugs++;               
-            }
+            //         $drugs1[] = $drug ;
+            //     } else {
+            //         $drugs2[] = $drug ;
+            //     }
+            //     $indexDrugs++;               
+            // }
         }
         
-        $clinics =  Clinic::all()->sortByDesc("id")->take(3);
-        $gallery =  Gallery::all()->sortByDesc("id")->first();
-        $galleries = Gallery::where('id' , '!=' ,$gallery->id )->orderBy('id', 'DESC')->get();
+        // $clinics =  Clinic::all()->sortByDesc("id")->take(3);
+        // $gallery =  Gallery::all()->sortByDesc("id")->first();
+        // $galleries = Gallery::where('id' , '!=' ,$gallery->id )->orderBy('id', 'DESC')->get();
         
-        return view("front-end.$this->lang.index" , compact('pageTitle' , 'news' ,'articals1','articals2', 'gallery' , 
-        'galleries' , 'questions'  , 'drugs1' ,'drugs2','operations' , 'operation1' ,'operation2' ,'operation3', 'clinics'));
+        // return view("front-end.$this->lang.index" , compact('pageTitle' , 'news' ,'articals1','articals2', 'gallery' , 
+        // 'galleries' , 'questions'  , 'drugs1' ,'drugs2','operations' , 'operation1' ,'operation2' ,'operation3', 'clinics'));
+        $services = Service::all()->sortByDesc("id");
+        $clients = Client::all()->sortByDesc("id");
+        $employees = Employee::all()->sortByDesc("id");
+        return view("front-end.$this->lang.index" , compact('services' , 'clients' , 'employees'));
     }
-
+    
+    public function clients()
+    {
+        $clients = Client::orderBy('id', 'desc')->paginate(6);
+        $pageTitle  = "العملاء";
+        if(  request()->segment(1) == "en" ){
+            $pageTitle  = "clients";
+        }
+        return view('front-end.'.$this->lang.'.clients', compact('pageTitle' ,'clients'));
+    }
     public function news()
     {
         $news = News::orderBy('id', 'desc')->paginate(6);
@@ -159,12 +165,11 @@ class HomeController extends Controller
             $pageTitle  = "news";
             $news = News::orderBy('id', 'desc')->where('en_title','!=',null)->paginate(6);
             $articals = Article::orderBy('id', 'desc')->where('en_title','!=',null)->paginate(4);
-            // return $news;
-          
         }
        
         return view('front-end.'.$this->lang.'.news', compact('pageTitle' , 'news' , 'articals'));
     }
+  
     public function show_news($id){
         
         $data = News::find($id);
