@@ -1,20 +1,22 @@
 <?php
 
 namespace App\Http\Controllers\BackEnd;
-use Auth;
+
 use App\Http\Controllers\Controller;
+use Carbon;
+use File;
 use Illuminate\Database\Eloquent\Model;
 use Image;
+
 class BackEndController extends Controller
 {
 
     protected $model;
 
-   
     public function __construct(Model $model)
     {
         $this->model = $model;
-       
+
     }
 
     public function index()
@@ -22,16 +24,16 @@ class BackEndController extends Controller
         $rows = $this->model;
         $rows = $this->filter($rows);
         $with = $this->with();
-        if(!empty($with)){
+        if (!empty($with)) {
             $rows = $rows->with($with);
         }
         $rows = $rows->orderBy('id', 'DESC')->get();
         $moduleName = $this->pluralModelName();
         $sModuleName = $this->getModelName();
         $routeName = $this->getClassNameFromModel();
-        $pageTitle = "Control ".$moduleName;
-        $pageDes = "Here you can add / edit / delete " .$moduleName;
-        // return $rows; 
+        $pageTitle = "Control " . $moduleName;
+        $pageDes = "Here you can add / edit / delete " . $moduleName;
+        // return $rows;
         // return Auth::user()->role;
         return view('back-end.' . $routeName . '.index', compact(
             'rows',
@@ -46,14 +48,14 @@ class BackEndController extends Controller
     public function create()
     {
         $moduleName = $this->getModelName();
-        $pageTitle = "Create ". $moduleName;
-        $pageDes = "Here you can create " .$moduleName;
+        $pageTitle = "Create " . $moduleName;
+        $pageDes = "Here you can create " . $moduleName;
         $folderName = $this->getClassNameFromModel();
         $routeName = $folderName;
-        $append = $this->append();
+        $append = $this->append(null);
 
         // return  request()->segment(3);
-        return view('back-end.' . $folderName . '.create' , compact(
+        return view('back-end.' . $folderName . '.create', compact(
             'pageTitle',
             'moduleName',
             'pageDes',
@@ -75,11 +77,12 @@ class BackEndController extends Controller
         $row = $this->model->FindOrFail($id);
         $moduleName = $this->getModelName();
         $pageTitle = "Edit " . $moduleName;
-        $pageDes = "Here you can edit " .$moduleName;
+        $pageDes = "Here you can edit " . $moduleName;
         $folderName = $this->getClassNameFromModel();
         $routeName = $folderName;
-        $append = $this->append();
-        // return $row; 
+        $append = $this->append($row);
+        // return $this->model;
+        // return $append;
         return view('back-end.' . $folderName . '.edit', compact(
             'row',
             'pageTitle',
@@ -89,27 +92,60 @@ class BackEndController extends Controller
             'routeName'
         ))->with($append);
     }
-    protected function uploadImage($request , $height = 400 , $width = 400){
-       
+    public function getDownload($path)
+    {
+        //PDF file is stored under project/public/download/info.pdf
+        $file = public_path() . "/download/info.pdf";
+
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+
+        return Response::download($file, 'filename.pdf', $headers);
+    }
+    protected function uploadImage($request, $height = 400, $width = 400)
+    {
+
         $photo = $request->file('image');
-        $fileName = time().str_random('10').'.'.$photo->getClientOriginalExtension();
-        $destinationPath = public_path('uploads/'.$this->getClassNameFromModel().'/');
+        $fileName = time() . str_random('10') . '.' . $photo->getClientOriginalExtension();
+        $destinationPath = 'uploads/' . $this->getClassNameFromModel() . '/';
         $image = Image::make($photo->getRealPath())->resize($height, $width);
 
-            // return $destinationPath;
-           
-         if(!is_dir($destinationPath) ){
-             mkdir($destinationPath);
-         }
-        $image->save($destinationPath.$fileName,60);
-        return $fileName;
+        // return $destinationPath;
+
+        if (!is_dir($destinationPath)) {
+            mkdir($destinationPath);
+        }
+        $image->save($destinationPath . $fileName);
+        return 'uploads/' . $this->getClassNameFromModel() . '/' . $fileName;
     }
+    protected function storeFile($file)
+    {
+        $mytime = Carbon\Carbon::now();
+        $file = Input::file('file');
+        $path = '/' . $this->pluralModelName();
+        if (!File::isDirectory($path)) {
+            File::makeDirectory($path, 0777, true, true);
+        }
+
+        $name = $this->pluralModelName() . ' ' . $mytime->toDateTimeString() . '.' . $file->getClientOriginalExtension();
+
+        $name = str_replace(' ', '_', $name);
+        $name = str_replace(':', '_', $name);
+        // $destinationPath = public_path('/' . $this->pluralModelName().'/');
+        $destinationPath = public_path();
+      
+        $file->move($destinationPath, $name);
+        return $this->pluralModelName() . '/' . $name;
+    }
+
     protected function filter($rows)
     {
         return $rows;
     }
 
-    protected function with(){
+    protected function with()
+    {
         return [];
     }
 
@@ -118,15 +154,18 @@ class BackEndController extends Controller
         return strtolower($this->pluralModelName());
     }
 
-    protected function pluralModelName(){
+    protected function pluralModelName()
+    {
         return str_plural($this->getModelName());
     }
 
-    protected function getModelName(){
+    protected function getModelName()
+    {
         return class_basename($this->model);
     }
 
-    protected function append(){
+    protected function append($row)
+    {
         return [];
     }
 

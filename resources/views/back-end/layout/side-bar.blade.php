@@ -1,7 +1,7 @@
 <section id="left-navigation">
     <!--Left navigation user details start-->
     <div class="user-image">
-        <img src="{{asset('panel/assets/images/demo/avatar-80.png')}}" alt=""/>
+        <img src="{{asset( isset(Auth::user()->image) ? Auth::user()->image : 'panel/assets/images/demo/avatar-80.png')}}" alt=""  width="100" height="100"/>
         <div class="user-online-status"><span class="user-status is-online  "></span> </div>
     </div>
     <ul class="social-icon">
@@ -33,66 +33,61 @@
                     <i class="fas fa-edit"></i><span>تعديل بيانات الموقع</span>
             </a>
         </li>
-        
-        <li class="{{is_active('users')}}">
-                <a href="#"  class="{{is_active('users')}}">
-                        <i class="fa fa-group"></i><span>المستخدمين</span>
-                </a>  
-            <ul>
-                    <li>
-                            <a href="{{route('users.index')}}"  >
-                                    <i class="fa fa-group"></i><span>المستخدمين</span>
-                            </a>  
-                    </li>
-                    <li>
-                            <a href="{{route('users.edit' , ['id' => Auth::user()->id])}}" class="{{is_active('brefs')}}">
-                                    <i class="fas fa-edit"></i><span>تعديل بيانات الحساب</span>
-                            </a>
-                    </li>
-            </ul>
+
+        @if( Auth::user()->role == 1 )
+        <li>
+            <a id="users"href="{{route('users.index')}}" class="{{is_active('users')}}">
+                <i class="fa fa-group"></i><span>المستخدمين</span>
+            </a>
         </li>
-        @if (strpos($briefs->manager, 'galleries') !== false) 
+        @endif
+        <li>
+            <a href="{{route('users.edit' , ['id' => Auth::user()->id])}}" class="{{edit_profle_is_active('users')}}">
+                <i class="fas fa-edit"></i><span>تعديل بيانات الحساب</span>
+            </a>
+        </li>
+        @if (strpos($briefs->manager, 'galleries') !== false)
         <li class="{{is_active('galleries')}}">
             <a href="{{route('galleries.index')}}"  class="{{is_active('galleries')}}">
                     <i class="fa fa-image"></i><span>معرض الصور</span>
             </a>
-        
+
         </li>
         @endif
         <li class="{{is_active('videos')}}">
             <a href="{{route('videos.index')}}"  class="{{is_active('videos')}}">
                     <i class="fa fa-image"></i><span>فديوهات</span>
             </a>
-        
+
         </li>
         <li class="{{is_active('news')}}">
             <a href="{{route('news.index')}}"  class="{{is_active('news')}}">
                     <i class="far fa-newspaper"></i><span>الأخبار</span>
             </a>
-        
+
         </li>
         <li class="{{is_active('articles')}}">
             <a href="{{route('articles.index')}}"  class="{{is_active('articles')}}">
                     <i class="fa fa-image"></i><span>المقالات</span>
             </a>
-        
-        </li> 
+
+        </li>
         <li class="{{is_active('questions')}}">
             <a href="{{route('questions.index')}}"  class="{{is_active('questions')}}">
                     <i class="fa fa-question"></i><span>الأسئله الشائعه</span>
             </a>
-        
+
         </li>
-      
+
         <li >
             <a class="dropdown-item" href="{{ route('logout') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
-             
-            
+
+
              <i class="fa fa-power-off"></i><span>تسجيل الخروج</span>
             </a>
-        
+
         </li>
     </ul>
     <!--Left navigation end-->
